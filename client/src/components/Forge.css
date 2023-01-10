@@ -1,0 +1,19 @@
+.forge, .forge form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.forge form {
+  margin-top: 20px;
+}
+
+form textarea {
+  width: 100%;
+  height: 5rem;
+}
+
+form input {
+  width: 100%;
+}

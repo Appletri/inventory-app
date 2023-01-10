@@ -46,43 +46,50 @@ function createItems(cb) {
           itemCreate('Wood Sword', 'Common', 'Default', 'A weapon made of wood. It is mainly used for training.',
           [
             {att: 3},
-            {str: 1}
-          ], 'no special effect', false, callback);
+            {str: 1},
+          ], 
+          'no special effect', false, callback);
         },
         function(callback) {
           itemCreate('Wood Shield', 'Common', 'Default', 'A shield made of wood.',
           [
+            
             {def: 3},
-            {block: 1}
-          ], 'no special effect', false, callback);
+            {block: 1},
+          ], 
+          'no special effect', false, callback);
         },
         function(callback) {
           itemCreate('Cloth Tunic', 'Common', 'Default', 'A thin piece of fabric, poorly made.',
           [
             {def: 1},
-            {vit: 1}
-          ], 'no special effect', false, callback);
+            {vit: 1},
+          ],  
+          'no special effect', false, callback);
         },
         function(callback) {
-          itemCreate('Cloth Pants', 'Common', 'Default', 'A thin piece of fapric, poorly made.',
+          itemCreate('Cloth Pants', 'Common', 'Default', 'A thin piece of fabric, poorly made.',
           [
             {def: 1},
-            {vit: 1}
-          ], 'no special effect', false, callback);
+            {vit: 1},
+          ], 
+          'no special effect', false, callback);
         },
         function(callback) {
           itemCreate('Tattered Boots', 'Common', 'Default', 'Shoes with poor integrity.',
           [
             {def: 1},
-            {dex: 1}
-          ], 'no special effect', false, callback);
+            {dex: 1},
+          ], 
+          'no special effect', false, callback);
         },
         function(callback) {
           itemCreate("Tattered Gloves", 'Common', 'Default', 'Overused gloves made to protect the hand.',
           [
             {att: 2},
-            {str: 1}
-          ], 'no special effect', false, callback);
+            {str: 1},
+          ], 
+          'no special effect', false, callback);
         },
         ],
         // optional callback

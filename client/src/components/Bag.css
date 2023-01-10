@@ -1,0 +1,93 @@
+.bag {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  background-color: lightgrey;
+  border-top-left-radius:15px;
+  border: 1px solid black;
+  width: 15rem;
+  margin: 2rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.bag .selected {
+  box-shadow:
+    0 0 0 10px hsl(0, 0%, 100%),
+    0 0 0 15px hsl(119, 94%, 63%);
+  transition: box_shadow 1s ease;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow:
+      0 0 0 10px hsl(0, 0%, 100%),
+      0 0 0 15px hsl(119, 94%, 63%);
+  }
+  50% {
+    box-shadow:
+      0 0 0 5px hsl(0, 0%, 100%),
+      0 0 0 10px hsl(119, 98%, 23%);
+  }
+  100% {
+    box-shadow:
+      0 0 0 10px hsl(0, 0%, 100%),
+      0 0 0 15px hsl(119, 94%, 63%);
+  }
+}
+
+.Common {
+  border: 2px solid grey;
+  outline: 4px solid rgb(68, 68, 68);
+}
+
+.Uncommon {
+  border: 2px solid rgb(101, 184, 53);
+  outline: 4px solid rgb(9, 86, 5);
+}
+
+.Rare {
+  border: 2px solid rgb(46, 252, 232);
+  outline: 4px solid rgb(8, 31, 127);
+}
+
+.Epic {
+  border: 3px solid rgb(255, 0, 221);
+  outline: 4px solid rgb(98, 1, 117);
+}
+
+.Legendary {
+  border: 5px solid rgb(255, 242, 0);
+  outline: 4px solid rgb(141, 86, 9);
+}
+
+.item-info {
+  height: 12rem;
+}
+
+.item-info img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.des {
+  color: rgb(71, 71, 71);
+  font-size: .75rem;
+}
+
+.stats {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: .9rem;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.specialfx {
+  color: rgb(29, 109, 166);
+}

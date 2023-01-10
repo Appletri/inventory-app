@@ -1,0 +1,55 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.navbar .selected a{
+  color: black;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: lightgrey;
+}
+
+.tabs {
+  margin: 1rem 1rem 0rem 1rem;
+}
+
+.navbar div {
+  color: lightgrey;
+  cursor: pointer;
+  user-select: none;
+}
+
+.navbar .forge {
+  color: hsl(119, 94%, 63%);
+  transition: color 1s ease;
+  animation: textpulse 1.2s infinite;
+}
+
+@keyframes textpulse {
+0% {
+color: lightgrey;
+}
+50% {
+  color: hsl(119, 94%, 63%);
+}
+100% {
+  color: lightgrey;
+}
+}
+
+.hidden {
+  display: none
+}
+
+.validation {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: rgb(255, 0, 0);
+  padding: 0.5rem;
+}

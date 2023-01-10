@@ -5,11 +5,14 @@ const Schema = mongoose.Schema
 const ItemSchema = new Schema({
   name: { type: String, required: true, maxLength: 100},
   quality: {type: String},
-  creator: { type: String, required: true, maxLength: 100},
+  creator: { type: String, maxLength: 100},
   date_of_creation: {type: Date},
   description: { type: String, required: true },
   stats: {
     "type": "array",
+    "stat": {
+      "type": "object",
+    },
     "minItems": 2,
     "maxItems": 6,  
   },
