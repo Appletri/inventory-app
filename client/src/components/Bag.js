@@ -1,41 +1,41 @@
 import { useEffect, useState } from 'react';
 import './Bag.css';
+import ItemDisplay from './ItemDisplay';
+
 
 function Bag(props) {
   const [selectedItem, setSelectedItem] = useState();
+  const [displayItem, setDisplayItem] = useState();
 
   useEffect(() => {
     props.selectItem(selectedItem);
   }, [selectedItem] );
 
+  const getInitials = (e) => {
+    let initials = '';
+    e.split(' ').forEach(word => {
+      initials = initials + word[0];
+    })
+    return initials;
+  }
+
   return (
-    <div className="bag">
-      {!props.bag ? 'loading' : props.bag.map((item) => {
-        return (
-          <div onClick={() => {setSelectedItem(item._id)}} 
-          key={item._id} className={selectedItem === item._id ?`item selected ${item.quality}` : `item ${item.quality}`}>
-            <div className='item-info'>
-              <h3>{item.name}</h3>
-              <img src={props.img} alt={props.imgtext}/>
-              <p className='des'>{item.description}</p>
+    <div className='bag'>
+      <div className="bag_display">
+        {!props.bag ? 'loading' : props.bag.map((item) => {
+          return (
+            <div onClick={() => { setSelectedItem(item._id); 
+            setDisplayItem(item);}} key={item._id} className={
+            selectedItem === item._id ?`item_bagged selected ${item.quality}` : `item_bagged ${item.quality}`}>
+              {item.img !== undefined ? 
+                <img src={item.img} alt={item.img}/> : 
+                <p>{getInitials(item.name)}</p>
+              }
             </div>
-            <div className="stats">
-              {item.stats.map((stat, index) => {
-                return(
-                  <div key={index}>
-                    {Object.entries(stat).map((key, index) => {
-                    return(
-                      <p key={index} className='stat'>{`${key[0]}: ${key[1]}`}</p>
-                    )
-                    })}
-                  </div>
-                )
-              })}
-            </div>
-            <p className='specialfx'>{item.special === 'no special effect' ? null : item.special}</p>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
+      {!selectedItem ? null : <ItemDisplay item={displayItem}/>}
     </div>
   )
 }

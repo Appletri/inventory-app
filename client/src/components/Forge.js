@@ -3,7 +3,11 @@ import { useState } from 'react';
 import './Forge.css';
 
 function Forge(props) {
-  const [item, setItem] = useState(props.item);
+  const imageName = props.item.img.split('/');
+  const [name, setName] = useState(props.item.name);
+  const [des, setDes] = useState(props.item.description);
+  const [special, setSpecial] = useState(props.item.special);
+  const [image, setImage] = useState(imageName[imageName.length-1]);
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -19,66 +23,61 @@ function Forge(props) {
     
   }
 
-  const handleChangeName = (e) => {
-    setItem({
-      _id: item._id,
-      name: e.target.value,
-      quality: item.quality,
-      description: item.description,
-      stats: item.stats,
-      special: item.special,
-    })
-  };
-
-  const handleChangeDes = (e) => {
-    setItem({
-      _id: item._id,
-      name: item.name,
-      quality: item.quality,
-      description: e.target.value,
-      stats: item.stats,
-      special: item.special,
-    })
-  };
-
-  const handleChangeSpecial = (e) => {
-    setItem({
-      _id: item._id,
-      name: item.name,
-      quality: item.quality,
-      description: item.description,
-      stats: item.stats,
-      special: e.target.value,
-    })
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const itemID = props.item._id;
     const url = window.location.href.split('/');
-    const forgedItem = item;
-    console.log(forgedItem);
-    
-    axios.post(`http://localhost:9000/testAPI/${itemID}/update`, { forgedItem })
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-      window.location.assign(`${url[0]}//${url[2]}`);
+    const formData = new FormData();
+    const itemID = props.item._id;
+    const statsKeys = [];
+    const statsVal = [];
+    formData.append('id', props.item._id);
+    formData.append('name', name);
+    formData.append('quality', props.item.quality);
+    formData.append('description', des);
+    formData.append('special', special);
+    formData.append('item-image', image);
+    console.log(image);
+    props.item.stats.forEach(stat => 
+      Object.keys(stat).forEach(key => {
+        statsKeys.push([key]);
+        statsVal.push(stat[key]);
       })
-    
+    );
+      
+    formData.append('stats_keys', statsKeys);
+    formData.append('stats_values', statsVal);
+
+    axios.post(`http://localhost:9000/testAPI/${itemID}/update`,formData, {
+      onUploadProgress: progressEvent => {
+        console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%');
+      }
+    }).then(res => {
+      console.log(res);
+      window.location.assign(`${url[0]}//${url[2]}`);
+    }).catch((error) => {
+      console.log(error.response.data);
+    });
   }
+
 
   return (
     <div className="forge">
       <div>
         <button onClick={handleDelete}> Delete</button>
-        <button onClick={handleSubmit}> Submit </button>
       </div>
       {!props.item ? 'loading' : 
-        <form>  
-          <input onChange={handleChangeName} type='text' defaultValue={props.item.name}/>
-          <img src={props.img} alt={props.imgtext}/>
-          <textarea onChange={handleChangeDes} className='des' defaultValue={props.item.description}/>
+        <form encType="multipart/form-data" 
+        onSubmit={handleSubmit}>  
+          <label>
+            <input onChange={(e)=> setName(e.target.value)} type='text' value={name}/>
+          </label>
+          <img src={props.item.img} alt={props.item.img}/>
+          <label>
+            <input type="file" name="item-image" onChange={(e)=> setImage(e.target.files[0])}/>
+          </label>
+          <label>
+            <textarea onChange={(e)=> setDes(e.target.value)} className='des' value={des} type='text'/>
+          </label>
           <div className="form-stats">
             {props.item.stats.map((stat, index) => {
               return(
@@ -92,12 +91,15 @@ function Forge(props) {
               )
             })}
           </div>
+          <label>
           {props.item.special === 'no special effect' ? 
             <p className='specialfx'>{props.item.special}</p>
             :
-            <textarea onChange={handleChangeSpecial} className='specialfx' 
+            <textarea onChange={(e)=> setSpecial(e.target.value)} className='specialfx' 
             defaultValue={props.item.special} />
           }
+          </label>
+          <button type="submit">Reforge</button>
         </form>
       }    
     </div>

@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 const ItemSchema = new Schema({
   name: { type: String, required: true, maxLength: 100},
   quality: {type: String},
+  img: {type: String},
   creator: { type: String, maxLength: 100},
   date_of_creation: {type: Date},
   description: { type: String, required: true },
