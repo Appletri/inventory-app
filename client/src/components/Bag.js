@@ -26,7 +26,7 @@ function Bag(props) {
           return (
             <div onClick={() => { setSelectedItem(item._id); 
             setDisplayItem(item);}} key={item._id} className={
-            selectedItem === item._id ?`item_bagged selected ${item.quality}` : `item_bagged ${item.quality}`}>
+            selectedItem === item._id ?`item_bagged selected ${item.quality}B` : `item_bagged ${item.quality}B`}>
               {item.img !== undefined ? 
                 <img src={item.img} alt={item.img}/> : 
                 <p>{getInitials(item.name)}</p>

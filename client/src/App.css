@@ -1,5 +1,38 @@
+:root {
+  --main-bg-color: rgb(33, 33, 43);
+  --main-darkbg-color: rgb(15, 15, 30);
+  --main-font-color: rgb(255, 213, 0);
+  --main-darkfont-color: rgb(54, 54, 56);
+}
+
+
+
+hr {
+  width: 85%;
+  color: var(--main-darkfont-color);
+}
+
+button {
+  padding: 8px 16px;
+  background-color: rgba(210, 180, 140, 0);
+  color: var(--main-font-color);
+  font-size: .9rem;
+  border: 1px solid var(--main-font-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .2s ease;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: var(--main-font-color);
+  color: var(--main-darkbg-color);
+}
+
 .App {
   text-align: center;
+  background-color: var(--main-bg-color);
+  height: 100vh;
 }
 
 .App-logo {
@@ -40,4 +73,29 @@
 img {
   width: 100%;
   height: 100%;
+}
+
+.Common {
+  border: 3px solid grey !important;
+  outline: 5px solid rgb(68, 68, 68);
+}
+
+.Uncommon {
+  border: 3px solid rgb(101, 184, 53) !important;
+  outline: 5px solid rgb(9, 86, 5);
+}
+
+.Rare {
+  border: 3px solid rgb(46, 252, 232) !important;
+  outline: 5px solid rgb(8, 31, 127);
+}
+
+.Epic {
+  border: 3px solid rgb(255, 0, 221) !important;
+  outline: 5px solid rgb(98, 1, 117);
+}
+
+.Legendary {
+  border: 3px solid rgb(255, 242, 0) !important;
+  outline: 5px solid rgb(141, 86, 9);
 }

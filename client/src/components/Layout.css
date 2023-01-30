@@ -6,12 +6,12 @@
 }
 
 .navbar .selected a{
-  color: black;
+  color: var(--main-font-color);
 }
 
 .navbar a {
   text-decoration: none;
-  color: lightgrey;
+  color: var(--main-darkfont-color);
 }
 
 .tabs {
@@ -19,7 +19,7 @@
 }
 
 .navbar div {
-  color: lightgrey;
+  color: var(--main-darkfont-color);
   cursor: pointer;
   user-select: none;
 }
@@ -32,13 +32,13 @@
 
 @keyframes textpulse {
 0% {
-color: lightgrey;
+color: var(--main-darkfont-color);
 }
 50% {
   color: hsl(119, 94%, 63%);
 }
 100% {
-  color: lightgrey;
+  color: var(--main-darkfont-color);
 }
 }
 
@@ -52,4 +52,10 @@ color: lightgrey;
   font-weight: bold;
   background-color: rgb(255, 0, 0);
   padding: 0.5rem;
+}
+
+@media only screen and (max-width: 510px){
+  .navbar {
+    font-size: 2rem;
+  }
 }

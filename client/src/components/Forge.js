@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Forge.css';
 
 function Forge(props) {
-  const imageName = props.item.img.split('/');
+  const imageName = props.item.img !== undefined ? props.item.img.split('/') : [null]
   const [name, setName] = useState(props.item.name);
   const [des, setDes] = useState(props.item.description);
   const [special, setSpecial] = useState(props.item.special);
@@ -35,8 +35,11 @@ function Forge(props) {
     formData.append('quality', props.item.quality);
     formData.append('description', des);
     formData.append('special', special);
-    formData.append('item-image', image);
-    console.log(image);
+
+    if(image !== null) {
+      formData.append('item-image', image);
+    }
+
     props.item.stats.forEach(stat => 
       Object.keys(stat).forEach(key => {
         statsKeys.push([key]);
@@ -59,7 +62,6 @@ function Forge(props) {
     });
   }
 
-
   return (
     <div className="forge">
       <div>
@@ -71,7 +73,11 @@ function Forge(props) {
           <label>
             <input onChange={(e)=> setName(e.target.value)} type='text' value={name}/>
           </label>
-          <img src={props.item.img} alt={props.item.img}/>
+          {props.item.img !== undefined ? 
+                <img src={props.item.img} alt={props.item.img}/> : 
+                <p>No Image</p>
+          }
+          {/* <img src={props.item.img} alt={props.item.img}/> */}
           <label>
             <input type="file" name="item-image" onChange={(e)=> setImage(e.target.files[0])}/>
           </label>

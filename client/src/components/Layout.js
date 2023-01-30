@@ -43,6 +43,7 @@ function Layout(props) {
           </div>
         </div>
       </div>
+      <hr/>
       <Outlet />
     </div>
   )
