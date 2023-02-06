@@ -10,7 +10,7 @@ The core of this assignment is to create an mini inventory app where the user ca
 
 ### Design
 I wanted to create an inventory system based off of items you would see in a video game. I wanted those items to be influenced by 
-RNG and then the user would be able to update the items name, description, skills, etc. The item schema
+RNG and then the user would be able to update the items name, quality, description, image, stats, and special text. 
 
 ### Code Backend
 <hr>
