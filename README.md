@@ -1,5 +1,5 @@
 # Inventory App
-![incoming gif]()
+![](https://github.com/Appletri/Appletri/blob/main/assets/inventory-app.gif)
 ## Links
 - [Link to the Assignment](https://www.theodinproject.com/lessons/nodejs-inventory-application)
 
